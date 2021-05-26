@@ -21,7 +21,7 @@ export default defineComponent({
     SunIcon
   },
   methods: {
-    enableDarkMode(enabled: true) {
+    enableDarkMode(enabled: boolean) {
       colorSchemeService.setDarkMode((enabled));
     }
   }
