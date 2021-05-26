@@ -1,13 +1,20 @@
 <template>
-  <main class="container mx-auto px-4 pt-8">
-    <h1 class="text-3xl">runde.tips</h1>
-  </main>
+  <app-layout>
+    <foh-standings />
+  </app-layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import AppLayout from './layouts/AppLayout.vue';
+import FohStandings from './views/foh/Standings.vue';
+
 export default defineComponent({
   name: 'App',
+  components: {
+    AppLayout,
+    FohStandings
+  }
 })
 </script>
