@@ -25,6 +25,15 @@
         <a href="/login">Log In</a>
       </div>
     </div>
+    <div class="sm:hidden absolute top-0 inset-x-0 p-2">
+      <div class="px-4 py-2 bg-white rounded-lg shadow-md">
+        <div class="flex flex-col">
+          <a href="/tabelle">Tabelle</a>
+          <a href="/spieler">Spieler</a>
+          <a href="/spiele">Spiele</a>
+        </div>
+      </div>
+    </div>
   </nav>
   <main class="container mx-auto px-4 pt-8">
     <slot />
@@ -34,14 +43,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import { MenuIcon } from '@heroicons/vue/outline';
+import { MenuIcon, XIcon } from '@heroicons/vue/outline';
 import ColorSchemeSwitch from "../common/components/ColorSchemeSwitch.vue";
 
 export default defineComponent({
   name: 'AppLayout',
   components: {
     ColorSchemeSwitch,
-    MenuIcon
+    MenuIcon,
+    XIcon
   }
 })
 </script>
