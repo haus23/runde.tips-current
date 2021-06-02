@@ -26,7 +26,7 @@
       </div>
       <div class="flex items-center sm:hidden">
         <button
-          @click="setOpen(true)"
+          @click="setIsOpen(true)"
           class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-600 dark:focus:ring-gray-300"
         >
           <menu-icon class="w-6 h-6"></menu-icon>
@@ -63,7 +63,7 @@
               <a
                 :href="href"
                 @click="
-                  setOpen(false);
+                  setIsOpen(false);
                   navigate($event);
                 "
                 class="flex gap-x-2 text-black dark:text-white font-medium"
@@ -85,7 +85,7 @@
           <div class="flex">
             <color-scheme-switch></color-scheme-switch>
             <button
-              @click="setOpen(false)"
+              @click="setIsOpen(false)"
               class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-600 dark:focus:ring-gray-300"
             >
               <x-icon class="w-6 h-6"></x-icon>
@@ -94,20 +94,20 @@
         </div>
         <div class="pt-2">
           <div class="flex flex-col px-2 py-2 space-y-1">
-            <nav-link @navigated="setOpen(false)" to="/tabelle"
+            <nav-link @navigated="setIsOpen(false)" to="/tabelle"
               >Tabelle</nav-link
             >
-            <nav-link @navigated="setOpen(false)" to="/spieler"
+            <nav-link @navigated="setIsOpen(false)" to="/spieler"
               >Spieler</nav-link
             >
-            <nav-link @navigated="setOpen(false)" to="/spiele">Spiele</nav-link>
+            <nav-link @navigated="setIsOpen(false)" to="/spiele">Spiele</nav-link>
           </div>
           <div>
             <router-link to="/login" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
                 @click="
-                  setOpen(false);
+                  setIsOpen(false);
                   navigate($event);
                 "
                 class="rounded-b-lg font-medium py-1 block w-full text-center bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -125,7 +125,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 import { TransitionRoot } from "@headlessui/vue";
 import { MenuIcon, XIcon } from "@heroicons/vue/outline";
@@ -134,22 +134,16 @@ import NavLink from "../common/components/NavLink.vue";
 
 export default defineComponent({
   name: "AppLayout",
-  data: () => {
+  components: { TransitionRoot, MenuIcon, XIcon, ColorSchemeSwitch, NavLink },
+  setup() {
+    let isOpen = ref(false);
+
     return {
-      isOpen: false,
-    };
-  },
-  methods: {
-    setOpen(state: boolean): void {
-      this.isOpen = state;
-    },
-  },
-  components: {
-    TransitionRoot,
-    NavLink,
-    ColorSchemeSwitch,
-    MenuIcon,
-    XIcon,
-  },
+      isOpen,
+      setIsOpen(value: boolean) {
+        isOpen.value = value;
+      }
+    }
+  }
 });
 </script>
