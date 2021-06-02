@@ -44,7 +44,16 @@
         <nav-link to="/login">Log In</nav-link>
       </div>
     </div>
-    <div :class="{ hidden: !open }" class="absolute top-0 inset-x-0 p-2">
+    <transition-root
+      :show="open"
+      class="absolute top-0 inset-x-0 p-2"
+      enter="duration-150 ease-out"
+      enterFrom="opacity-0 scale-95"
+      enterTo="opacity-100 scale-100"
+      leave="duration-100 ease-in"
+      leaveFrom="opacity-100 scale-100"
+      leaveTo="opacity-0 scale-95"
+    >
       <div
         class="rounded-lg shadow-md bg-white dark:bg-black ring-1 ring-black ring-opacity-5"
       >
@@ -53,7 +62,10 @@
             <router-link to="/" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
-                @click="setOpen(false); navigate($event)"
+                @click="
+                  setOpen(false);
+                  navigate($event);
+                "
                 class="flex gap-x-2 text-black dark:text-white font-medium"
               >
                 <img
@@ -82,15 +94,22 @@
         </div>
         <div class="pt-2">
           <div class="flex flex-col px-2 py-2 space-y-1">
-            <nav-link @navigated="setOpen(false)" to="/tabelle">Tabelle</nav-link>
-            <nav-link @navigated="setOpen(false)" to="/spieler">Spieler</nav-link>
+            <nav-link @navigated="setOpen(false)" to="/tabelle"
+              >Tabelle</nav-link
+            >
+            <nav-link @navigated="setOpen(false)" to="/spieler"
+              >Spieler</nav-link
+            >
             <nav-link @navigated="setOpen(false)" to="/spiele">Spiele</nav-link>
           </div>
           <div>
             <router-link to="/login" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
-                @click="setOpen(false); navigate($event)"
+                @click="
+                  setOpen(false);
+                  navigate($event);
+                "
                 class="rounded-b-lg font-medium py-1 block w-full text-center bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >Log In</a
               >
@@ -98,7 +117,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </transition-root>
   </nav>
   <main class="container mx-auto px-4 pt-8">
     <slot />
@@ -108,6 +127,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+import { TransitionRoot } from "@headlessui/vue";
 import { MenuIcon, XIcon } from "@heroicons/vue/outline";
 import ColorSchemeSwitch from "../common/components/ColorSchemeSwitch.vue";
 import NavLink from "../common/components/NavLink.vue";
@@ -125,6 +145,7 @@ export default defineComponent({
     },
   },
   components: {
+    TransitionRoot,
     NavLink,
     ColorSchemeSwitch,
     MenuIcon,
