@@ -45,7 +45,7 @@
       </div>
     </div>
     <transition-root
-      :show="open"
+      :show="isOpen"
       class="absolute top-0 inset-x-0 p-2"
       enter="duration-150 ease-out"
       enterFrom="opacity-0 scale-95"
@@ -136,12 +136,12 @@ export default defineComponent({
   name: "AppLayout",
   data: () => {
     return {
-      open: false,
+      isOpen: false,
     };
   },
   methods: {
     setOpen(state: boolean): void {
-      this.open = state;
+      this.isOpen = state;
     },
   },
   components: {
