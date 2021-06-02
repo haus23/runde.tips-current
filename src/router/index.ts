@@ -6,7 +6,7 @@ import FohMatches from '../views/foh/Matches.vue';
 import FohLogIn from '../views/foh/LogIn.vue';
 
 const routes: RouteRecordRaw[] = [
-  { path: '/', component: FohStandings },
+  { path: '/', redirect: '/tabelle' },
   { path: '/tabelle', component: FohStandings },
   { path: '/spieler', component: FohPlayers },
   { path: '/spiele', component: FohMatches },
