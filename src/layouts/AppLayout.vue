@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="hidden sm:flex w-full items-center ml-4 font-medium">
-      <div class="flex-grow flex">
+      <div class="flex-grow flex gap-x-1">
         <nav-link to="/tabelle">Tabelle</nav-link>
         <nav-link to="/spieler">Spieler</nav-link>
         <nav-link to="/spiele">Spiele</nav-link>
