@@ -34,14 +34,14 @@
       </div>
     </div>
     <div class="hidden sm:flex w-full items-center ml-4 font-medium">
-      <div class="flex-grow flex gap-x-2">
-        <router-link to="/tabelle">Tabelle</router-link>
-        <router-link to="/spieler">Spieler</router-link>
-        <router-link to="/spiele">Spiele</router-link>
+      <div class="flex-grow flex">
+        <nav-link to="/tabelle">Tabelle</nav-link>
+        <nav-link to="/spieler">Spieler</nav-link>
+        <nav-link to="/spiele">Spiele</nav-link>
       </div>
       <div class="flex items-center gap-x-4">
         <color-scheme-switch></color-scheme-switch>
-        <router-link to="/login">Log In</router-link>
+        <nav-link to="/login">Log In</nav-link>
       </div>
     </div>
     <div :class="{ hidden: !open }" class="absolute top-0 inset-x-0 p-2">
@@ -85,33 +85,12 @@
         </div>
         <div class="pt-2">
           <div class="flex flex-col px-2 py-2 space-y-1">
-            <router-link to="/tabelle" custom v-slot="{ href, navigate }">
-              <a
-                :href="href"
-                @click="navigate"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
-                >Tabelle</a
-              >
-            </router-link>
-            <router-link to="/spieler" custom v-slot="{ href, navigate }">
-              <a
-                :href="href"
-                @click="navigate"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
-                >Spieler</a
-              >
-            </router-link>
-            <router-link to="/spiele" custom v-slot="{ href, navigate }">
-              <a
-                :href="href"
-                @click="navigate"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
-                >Spiele</a
-              >
-            </router-link>
+            <nav-link to="/tabelle">Tabelle</nav-link>
+            <nav-link to="/spieler">Spieler</nav-link>
+            <nav-link to="/spiele">Spiele</nav-link>
           </div>
-          <div class="rounded-b-lg">
-            <router-link to="/spiele" custom v-slot="{ href, navigate }">
+          <div>
+            <router-link to="/login" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
                 @click="navigate"
@@ -134,6 +113,7 @@ import { defineComponent } from "vue";
 
 import { MenuIcon, XIcon } from "@heroicons/vue/outline";
 import ColorSchemeSwitch from "../common/components/ColorSchemeSwitch.vue";
+import NavLink from "../common/components/NavLink.vue";
 
 export default defineComponent({
   name: "AppLayout",
@@ -148,6 +128,7 @@ export default defineComponent({
     },
   },
   components: {
+    NavLink,
     ColorSchemeSwitch,
     MenuIcon,
     XIcon,
