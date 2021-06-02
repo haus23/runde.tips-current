@@ -50,13 +50,10 @@
       >
         <div class="flex px-2 pt-2">
           <div class="flex flex-grow">
-            <router-link to="/" custom v-slot="{ href, route, navigate }">
+            <router-link to="/" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
-                @click="
-                  setOpen(false);
-                  navigate(route);
-                "
+                @click="setOpen(false); navigate($event)"
                 class="flex gap-x-2 text-black dark:text-white font-medium"
               >
                 <img
@@ -85,15 +82,15 @@
         </div>
         <div class="pt-2">
           <div class="flex flex-col px-2 py-2 space-y-1">
-            <nav-link to="/tabelle">Tabelle</nav-link>
-            <nav-link to="/spieler">Spieler</nav-link>
-            <nav-link to="/spiele">Spiele</nav-link>
+            <nav-link @navigated="setOpen(false)" to="/tabelle">Tabelle</nav-link>
+            <nav-link @navigated="setOpen(false)" to="/spieler">Spieler</nav-link>
+            <nav-link @navigated="setOpen(false)" to="/spiele">Spiele</nav-link>
           </div>
           <div>
             <router-link to="/login" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
-                @click="navigate"
+                @click="setOpen(false); navigate($event)"
                 class="rounded-b-lg font-medium py-1 block w-full text-center bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >Log In</a
               >
