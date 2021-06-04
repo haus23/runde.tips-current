@@ -46,7 +46,7 @@
     </div>
     <transition-root
       :show="isOpen"
-      class="absolute top-0 inset-x-0 p-2"
+      class="absolute top-0 inset-x-0 p-2 z-50"
       enter="duration-150 ease-out"
       enterFrom="opacity-0 scale-95"
       enterTo="opacity-100 scale-100"
@@ -83,7 +83,7 @@
             </router-link>
           </div>
           <div class="flex">
-            <color-scheme-switch></color-scheme-switch>
+            <color-scheme-switch @click="setIsOpen(false)"></color-scheme-switch>
             <button
               @click="setIsOpen(false)"
               class="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-600 dark:focus:ring-gray-300"

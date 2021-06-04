@@ -20,9 +20,11 @@ export default defineComponent({
     MoonIcon,
     SunIcon
   },
+  emits: ['click'],
   methods: {
     enableDarkMode(enabled: boolean) {
-      colorSchemeService.setDarkMode((enabled));
+      colorSchemeService.setDarkMode(enabled);
+      this.$emit('click');
     }
   }
 })
