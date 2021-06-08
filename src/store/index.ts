@@ -1,13 +1,17 @@
 import { onSnapshot, orderBy, query } from "@firebase/firestore";
 import { InjectionKey } from "vue";
-import { createStore, Store, useStore as baseUseStore } from "vuex";
+import { createLogger, createStore, Store, useStore as baseUseStore } from "vuex";
 import { championships } from "../api/firebase";
 import { Championship } from "../api/model/championship";
 import { AppState } from "./state";
 
+const debug = process.env.NODE_ENV !== 'production';
+
 export const storeKey: InjectionKey<Store<AppState>> = Symbol();
 
 export const store = createStore<AppState>({
+  strict: debug,
+  plugins: debug ? [createLogger()] : [],
   state: {
     isLoading: true,
     championships: [],
