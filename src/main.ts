@@ -10,6 +10,10 @@ import router from './router';
 // Firebase
 import './api/firebase';
 
+// Store
+import { store, storeKey } from './store';
+
 createApp(App)
   .use(router)
+  .use(store, storeKey)
   .mount('#app')

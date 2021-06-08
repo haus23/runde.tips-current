@@ -3,21 +3,15 @@
 </template>
 
 <script lang="ts">
-import { DocumentData, getDocs, orderBy, query } from '@firebase/firestore';
-import { defineComponent, ref } from 'vue'
-import { championships  } from '../../api/firebase';
+import { computed, defineComponent } from 'vue'
+import { useStore } from '../../store';
 
 export default defineComponent({
   name: 'FohStandings',
   setup() {
-    const championship = ref<DocumentData | undefined>(undefined);
-    const q = query(championships, orderBy('nr', 'desc'));
-    getDocs(q).then(qs => {
-      championship.value = qs.docs.find(d => d.data().published)?.data();
-    });
-
+    const store = useStore();
     return {
-      championship
+      championship: computed(() => store.state.currentChampionship)
     };
   }
 })
