@@ -15,6 +15,9 @@ import { store, storeKey } from './store';
 
 auth.onAuthStateChanged(user => {
   store.dispatch('fetchInitialData');
+  if (user) {
+    store.commit('signIn');
+  }
 });
 
 createApp(App)

@@ -13,11 +13,15 @@ export const store = createStore<AppState>({
   strict: debug,
   plugins: debug ? [createLogger()] : [],
   state: {
+    isAuthenticated: false,
     isLoading: true,
     championships: [],
     currentChampionship: undefined
   },
   mutations: {
+    signIn(state) {
+      state.isAuthenticated = true;
+    },
     setIsLoading(state, isLoading: boolean) {
       state.isLoading = isLoading;
     },

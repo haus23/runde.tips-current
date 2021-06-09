@@ -41,7 +41,8 @@
       </div>
       <div class="flex items-center gap-x-4">
         <color-scheme-switch></color-scheme-switch>
-        <nav-link to="/login">Log In</nav-link>
+        <nav-link v-if="isAuthenticated" to="/hinterhof">Hinterhof</nav-link>
+        <nav-link v-else to="/login">Log In</nav-link>
       </div>
     </div>
     <transition-root
@@ -103,7 +104,18 @@
             <nav-link @navigated="setIsOpen(false)" to="/spiele">Spiele</nav-link>
           </div>
           <div>
-            <router-link to="/login" custom v-slot="{ href, navigate }">
+            <router-link v-if="isAuthenticated" to="/hinterhof" custom v-slot="{ href, navigate }">
+              <a
+                :href="href"
+                @click="
+                  setIsOpen(false);
+                  navigate($event);
+                "
+                class="rounded-b-lg font-medium py-1 block w-full text-center bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >Hinterhof</a
+              >
+            </router-link>
+            <router-link v-else to="/login" custom v-slot="{ href, navigate }">
               <a
                 :href="href"
                 @click="
@@ -125,21 +137,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 
 import { TransitionRoot } from "@headlessui/vue";
 import { MenuIcon, XIcon } from "@heroicons/vue/outline";
 import ColorSchemeSwitch from "../common/components/ColorSchemeSwitch.vue";
 import NavLink from "../common/components/NavLink.vue";
+import { useStore } from "../store";
 
 export default defineComponent({
   name: "AppLayout",
   components: { TransitionRoot, MenuIcon, XIcon, ColorSchemeSwitch, NavLink },
   setup() {
-    let isOpen = ref(false);
+    const isOpen = ref(false);
+    const store = useStore();
 
     return {
       isOpen,
+      isAuthenticated: computed(() => store.state.isAuthenticated),
       setIsOpen(value: boolean) {
         isOpen.value = value;
       }

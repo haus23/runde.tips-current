@@ -21,6 +21,9 @@
             Anmelden
           </button>
         </div>
+        <div v-if="hasError" class="text-center">
+          <span class="text-red-500 font-semibold">Fehler bei der Anmeldung.</span>
+        </div>
       </form>
     </div>
     </div>
@@ -29,21 +32,36 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { LockClosedIcon } from "@heroicons/vue/outline";
+import { auth } from "../../api/firebase";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { useStore } from "../../store";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "FohLogIn",
   components: { LockClosedIcon },
   setup() {
+
+    const store = useStore();
+    const router = useRouter();
+
     const email = ref('');
     const password = ref('');
+    const hasError = ref(false);
 
     const logIn = () => {
-
+      signInWithEmailAndPassword(auth, email.value, password.value)
+        .then(() => {
+          store.commit('signIn');
+          router.replace('/hinterhof');
+        })
+        .catch(() => hasError.value = true);
     };
 
     return {
       email,
       password,
+      hasError,
       logIn
     };
   },

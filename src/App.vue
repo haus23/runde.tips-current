@@ -9,22 +9,20 @@
   >
     <splash-screen></splash-screen>
   </transition-root>
-  <app-layout>
+  <component :is="$route.meta.layout">
     <router-view></router-view>
-  </app-layout>
+  </component>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { TransitionRoot } from '@headlessui/vue';
-import AppLayout from './layouts/AppLayout.vue';
 import SplashScreen from './common/components/SplashScreen.vue';
 import { useStore } from './store';
 
 export default defineComponent({
   name: 'App',
   components: {
-    AppLayout,
     TransitionRoot,
     SplashScreen
   },
