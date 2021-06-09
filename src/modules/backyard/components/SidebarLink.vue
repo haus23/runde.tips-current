@@ -17,7 +17,8 @@ export default defineComponent({
   components: { AppLink },
   props: {
     icon: {
-      type: [Function]
+      type: [Function, String],
+      default: 'span'
     }
   }
 })
