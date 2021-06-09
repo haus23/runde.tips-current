@@ -1,3 +1,3 @@
 <template>
-  <h2>Hinterhof</h2>
+  <h2 class="text-sm font-semibold uppercase">Dashboard</h2>
 </template>
