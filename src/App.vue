@@ -31,10 +31,6 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
-    setTimeout(() => {
-      store.dispatch('fetchInitialData');
-    }, 3000);
-
     return {
       isLoading: computed(() => store.state.isLoading)
     }

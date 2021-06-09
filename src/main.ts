@@ -8,10 +8,14 @@ import App from './App.vue'
 import router from './router';
 
 // Firebase
-import './api/firebase';
+import { auth } from './api/firebase';
 
 // Store
 import { store, storeKey } from './store';
+
+auth.onAuthStateChanged(user => {
+  store.dispatch('fetchInitialData');
+});
 
 createApp(App)
   .use(router)
