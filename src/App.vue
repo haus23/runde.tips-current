@@ -6,7 +6,7 @@
   >
     <splash-screen></splash-screen>
   </transition-root>
-  <app-layout>
+  <app-layout v-if="!isLoading">
     <router-view></router-view>
   </app-layout>
 </template>
