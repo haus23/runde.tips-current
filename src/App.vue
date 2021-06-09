@@ -1,12 +1,15 @@
 <template>
   <transition-root :show="isLoading"
+    enter="transition-opacity duration-75"
+    enter-from="opacity-0"
+    enter-to="opacity-100"
     leave="transition-opacity duration-300"
     leave-from="opacity-100"
     leave-to="opacity-0"
   >
     <splash-screen></splash-screen>
   </transition-root>
-  <app-layout v-if="!isLoading">
+  <app-layout>
     <router-view></router-view>
   </app-layout>
 </template>
