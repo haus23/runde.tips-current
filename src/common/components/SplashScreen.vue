@@ -13,7 +13,7 @@
       justify-center
     "
   >
-    <div class="flex flex-col items-center gap-y-6">
+    <div class="flex flex-col items-center gap-y-6 w-48 sm:w-64">
       <span class="text-4xl px-6 font-semibold">runde.tips</span>
       <svg class="fill-current" viewBox="0 0 3160 2610">
         <g>
