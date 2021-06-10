@@ -9,7 +9,9 @@
   >
     <splash-screen></splash-screen>
   </transition-root>
-  <h2 class="p-8 text-2xl font-semibold">runde.tips</h2>
+  <component :is="$route.meta.layout">
+    <router-view></router-view>
+  </component>
 </template>
 
 <script>
@@ -21,7 +23,7 @@ export default {
   name: 'App',
   components: {
     TransitionRoot,
-    SplashScreen
+    SplashScreen,
   },
   setup() {
     const isLoading = ref(true);

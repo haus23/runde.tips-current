@@ -6,19 +6,14 @@
   </router-link>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script>
 import { RouterLink } from 'vue-router';
 
-export default defineComponent({
+export default {
   props: {
-    // @ts-ignore
     ...RouterLink.props,
     inactiveClass: String,
   }
-})
+}
 </script>
 
-<style>
-
-</style>

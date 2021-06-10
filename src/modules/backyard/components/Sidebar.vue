@@ -12,7 +12,7 @@
       <div class="hidden sm:block">
         <ul class="flex flex-col gap-y-2 mt-4">
           <li>
-            <sidebar-link to="/hinterhof" :icon="HomeIcon">Dashboard</sidebar-link>
+            <sidebar-link to="/hinterhof/dashboard" :icon="HomeIcon">Dashboard</sidebar-link>
           </li>
           <li>
             <sidebar-link to="/hinterhof/turniere" :icon="ClipboardListIcon">Turniere</sidebar-link>
@@ -23,17 +23,16 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { HomeIcon, ClipboardListIcon } from '@heroicons/vue/outline'
+<script>
+import { HomeIcon, ClipboardListIcon } from '@heroicons/vue/outline';
 import SidebarLink from './SidebarLink.vue';
 
-export default defineComponent({
+export default {
   components: { SidebarLink },
   setup() {
     return {
       HomeIcon, ClipboardListIcon
     }
   }
-})
+}
 </script>
