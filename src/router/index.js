@@ -11,6 +11,7 @@ import BackyardLayout from '../layouts/BackyardLayout.vue';
 import BackyardWrapper from '../views/backyard/Wrapper.vue';
 import BackyardDashboard from '../views/backyard/Dashboard.vue';
 import BackyardChampionshipList from '../views/backyard/ChampionshipList.vue';
+import BackyardChampionshipPlayers from '../views/backyard/ChampionshipPlayers.vue';
 
 const routes = [
   { path: '/', redirect: '/tabelle' },
@@ -33,6 +34,7 @@ const routes = [
     children: [
       { path: 'dashboard', component: BackyardDashboard },
       { path: 'turniere', component: BackyardChampionshipList },
+      { path: 'spieler', component: BackyardChampionshipPlayers },
     ],
   },
 ];

@@ -1,12 +1,16 @@
 import { onSnapshot, orderBy, query } from '@firebase/firestore';
 import { createLogger, createStore } from 'vuex';
-import { championships } from '../api/firebase';
+import { championshipsRef } from '../api/firebase';
+import moduleBackyard from './backyard';
 
 const debug = process.env.NODE_ENV !== 'production';
 
 const store = createStore({
   strict: debug,
   plugins: debug ? [createLogger()] : [],
+  modules: {
+    backyard: moduleBackyard,
+  },
   state: {
     isAuthenticated: false,
     isLoading: true,
@@ -29,7 +33,7 @@ const store = createStore({
   },
   actions: {
     fetchInitialData({ commit, dispatch }) {
-      const q = query(championships, orderBy('nr', 'desc'));
+      const q = query(championshipsRef, orderBy('nr', 'desc'));
       onSnapshot(q, (qs) => {
         const allChampionships = qs.docs.map((doc) => ({
           id: doc.id,

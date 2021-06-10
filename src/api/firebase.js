@@ -11,6 +11,7 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
 
-const championships = collection(db, 'championships');
+const championshipsRef = collection(db, 'championships');
+const playersRef = collection(db, 'players');
 
-export { db, auth, championships };
+export { db, auth, championshipsRef, playersRef };
