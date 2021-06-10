@@ -9,12 +9,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script>
 import { MoonIcon, SunIcon} from '@heroicons/vue/outline';
 import colorSchemeService from '../../services/color-scheme-service';
 
-export default defineComponent({
+export default {
   name: "ColorSchemeSwitch",
   components: {
     MoonIcon,
@@ -22,10 +21,10 @@ export default defineComponent({
   },
   emits: ['click'],
   methods: {
-    enableDarkMode(enabled: boolean) {
+    enableDarkMode(enabled) {
       colorSchemeService.setDarkMode(enabled);
       this.$emit('click');
     }
   }
-})
+}
 </script>
