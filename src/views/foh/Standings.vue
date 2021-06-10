@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
@@ -11,8 +11,8 @@ export default {
   setup() {
     const store = useStore();
     return {
-      championship: computed(() => store.state.currentChampionship)
+      championship: computed(() => store.state.currentChampionship),
     };
-  }
-}
+  },
+};
 </script>
