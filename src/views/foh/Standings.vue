@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-3xl">{{ championship?.title }} - Aktuelle Tabelle</h2>
+  <h2 class="text-3xl">{{ championship.title }} - Aktuelle Tabelle</h2>
 </template>
 
 <script>

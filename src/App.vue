@@ -1,5 +1,6 @@
 <template>
-  <transition-root :show="isLoading"
+  <transition-root
+    :show="isLoading"
     enter="transition-opacity duration-75"
     enter-from="opacity-0"
     enter-to="opacity-100"
@@ -9,7 +10,7 @@
   >
     <splash-screen></splash-screen>
   </transition-root>
-  <component :is="$route.meta.layout">
+  <component :is="$route.meta.layout" v-if="!isLoading">
     <router-view></router-view>
   </component>
 </template>
@@ -30,8 +31,8 @@ export default {
     const store = useStore();
 
     return {
-      isLoading: computed(() => store.state.isLoading)
-    }
-  }
-}
+      isLoading: computed(() => store.state.isLoading),
+    };
+  },
+};
 </script>
