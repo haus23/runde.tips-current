@@ -1,6 +1,6 @@
-import { onSnapshot, orderBy, query } from "@firebase/firestore";
-import { createLogger, createStore, Store, useStore as baseUseStore } from "vuex";
-import { championships } from "../api/firebase";
+import { onSnapshot, orderBy, query } from '@firebase/firestore';
+import { createLogger, createStore } from 'vuex';
+import { championships } from '../api/firebase';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -11,7 +11,7 @@ const store = createStore({
     isAuthenticated: false,
     isLoading: true,
     championships: [],
-    currentChampionship: undefined
+    currentChampionship: undefined,
   },
   mutations: {
     signIn(state) {
@@ -24,28 +24,28 @@ const store = createStore({
       state.championships = championships;
     },
     setCurrentChampionship(state, championship) {
-      state.currentChampionship = championship;    }
+      state.currentChampionship = championship;
+    },
   },
   actions: {
     fetchInitialData({ commit, dispatch }) {
-       const q = query(championships, orderBy('nr', 'desc'));
-       onSnapshot(q, qs => {
-
-         const allChampionships = qs.docs.map( doc => ({
-           id: doc.id,
-           ...doc.data()
-         }));
-         commit('setChampionships', allChampionships);
-         dispatch('prepareFohData');
-       });
+      const q = query(championships, orderBy('nr', 'desc'));
+      onSnapshot(q, (qs) => {
+        const allChampionships = qs.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        commit('setChampionships', allChampionships);
+        dispatch('prepareFohData');
+      });
     },
-    async prepareFohData({ commit, dispatch, state }) {
+    async prepareFohData({ commit, state }) {
       commit('setIsLoading', true);
-      const current = state.championships.find(c => c.published);
+      const current = state.championships.find((c) => c.published);
       commit('setCurrentChampionship', current);
       commit('setIsLoading', false);
-    }
-  }
+    },
+  },
 });
 
 export default store;

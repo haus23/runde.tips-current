@@ -12,14 +12,11 @@ import store from './store';
 
 // Firebase
 import { auth } from './api/firebase';
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged((user) => {
   store.dispatch('fetchInitialData');
   if (user) {
     store.commit('signIn');
   }
 });
 
-createApp(App)
-  .use(router)
-  .use(store)
-  .mount('#app');
+createApp(App).use(router).use(store).mount('#app');

@@ -1,7 +1,5 @@
 class ColorSchemeService {
-
   constructor() {
-
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const themeSettings = localStorage.colorScheme;
 
