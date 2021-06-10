@@ -1,6 +1,9 @@
 // The Styles
 import './styles.css';
 
+// Dark Mode Support
+import './services/color-scheme-service';
+
 // The App
 import { createApp } from 'vue';
 import App from './App.vue';
