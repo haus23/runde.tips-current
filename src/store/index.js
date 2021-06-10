@@ -1,15 +1,10 @@
 import { onSnapshot, orderBy, query } from "@firebase/firestore";
-import { InjectionKey } from "vue";
 import { createLogger, createStore, Store, useStore as baseUseStore } from "vuex";
 import { championships } from "../api/firebase";
-import { Championship } from "../api/model/championship";
-import { AppState } from "./state";
 
 const debug = process.env.NODE_ENV !== 'production';
 
-export const storeKey: InjectionKey<Store<AppState>> = Symbol();
-
-export const store = createStore<AppState>({
+const store = createStore({
   strict: debug,
   plugins: debug ? [createLogger()] : [],
   state: {
@@ -22,20 +17,21 @@ export const store = createStore<AppState>({
     signIn(state) {
       state.isAuthenticated = true;
     },
-    setIsLoading(state, isLoading: boolean) {
+    setIsLoading(state, isLoading) {
       state.isLoading = isLoading;
     },
-    setChampionships(state, championships: Championship[]) {
+    setChampionships(state, championships) {
       state.championships = championships;
     },
-    setCurrentChampionship(state, championship: Championship) {
+    setCurrentChampionship(state, championship) {
       state.currentChampionship = championship;    }
   },
   actions: {
     fetchInitialData({ commit, dispatch }) {
        const q = query(championships, orderBy('nr', 'desc'));
        onSnapshot(q, qs => {
-         const allChampionships: Championship[] = qs.docs.map( doc => ({
+
+         const allChampionships = qs.docs.map( doc => ({
            id: doc.id,
            ...doc.data()
          }));
@@ -52,6 +48,4 @@ export const store = createStore<AppState>({
   }
 });
 
-export function useStore(): Store<AppState> {
-  return baseUseStore(storeKey);
-}
+export default store;

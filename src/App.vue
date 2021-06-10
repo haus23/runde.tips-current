@@ -15,9 +15,10 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { TransitionRoot } from '@headlessui/vue';
 import SplashScreen from './common/components/SplashScreen.vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'App',
@@ -26,14 +27,10 @@ export default {
     SplashScreen,
   },
   setup() {
-    const isLoading = ref(true);
-
-    setTimeout(() => {
-      isLoading.value = false;
-    }, 3000);
+    const store = useStore();
 
     return {
-      isLoading
+      isLoading: computed(() => store.state.isLoading)
     }
   }
 }
