@@ -9,29 +9,30 @@
   >
     <splash-screen></splash-screen>
   </transition-root>
-  <component :is="$route.meta.layout">
-    <router-view></router-view>
-  </component>
+  <h2 class="p-8 text-2xl font-semibold">runde.tips</h2>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script>
+import { ref } from 'vue';
 import { TransitionRoot } from '@headlessui/vue';
 import SplashScreen from './common/components/SplashScreen.vue';
-import { useStore } from './store';
 
-export default defineComponent({
+export default {
   name: 'App',
   components: {
     TransitionRoot,
     SplashScreen
   },
   setup() {
-    const store = useStore();
+    const isLoading = ref(true);
+
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 3000);
 
     return {
-      isLoading: computed(() => store.state.isLoading)
+      isLoading
     }
   }
-})
+}
 </script>
