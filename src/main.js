@@ -1,18 +1,17 @@
 // The Styles
 import './styles.css';
+
+// Dark Mode Support
 import './services/color-scheme-service';
 
 // The App
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import router from './router';
+import store from './store';
 
 // Firebase
 import { auth } from './api/firebase';
-
-// Store
-import { store, storeKey } from './store';
-
 auth.onAuthStateChanged(user => {
   store.dispatch('fetchInitialData');
   if (user) {
@@ -22,5 +21,5 @@ auth.onAuthStateChanged(user => {
 
 createApp(App)
   .use(router)
-  .use(store, storeKey)
-  .mount('#app')
+  .use(store)
+  .mount('#app');

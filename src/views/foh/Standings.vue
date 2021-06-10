@@ -2,11 +2,11 @@
   <h2 class="text-3xl">{{ championship?.title }} - Aktuelle Tabelle</h2>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useStore } from '../../store';
+<script>
+import { computed } from 'vue'
+import { useStore } from 'vuex';
 
-export default defineComponent({
+export default {
   name: 'FohStandings',
   setup() {
     const store = useStore();
@@ -14,5 +14,5 @@ export default defineComponent({
       championship: computed(() => store.state.currentChampionship)
     };
   }
-})
+}
 </script>

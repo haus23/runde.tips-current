@@ -55,34 +55,14 @@
           />
         </g>
       </svg>
-      <div
-        class="
-          shim
-          relative
-          overflow-hidden
-          w-full
-          h-2
-          bg-gray-200
-          rounded
-        "
-      >
+      <div class="shim relative overflow-hidden w-full h-2 bg-gray-200 rounded">
         <div class="w-full h-full bg-indigo-500 rounded"></div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-export default defineComponent({});
-</script>
-
 <style>
-.shim-red {
-  position: relative;
-  overflow: hidden;
-  background-color: rgba(255, 0, 0, 0.7);
-}
 .shim::after {
   position: absolute;
   top: 0;

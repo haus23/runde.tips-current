@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { collection, CollectionReference, getFirestore } from "firebase/firestore";
+import { collection, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { ChampionshipData } from "./model/championship";
 
 const firebaseApp = initializeApp({
   projectId: import.meta.env.VITE_FB_PROJECT_ID,
@@ -12,7 +11,7 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
 
-const championships = collection(db, 'championships') as CollectionReference<ChampionshipData>;
+const championships = collection(db, 'championships');
 
 export {
   db,

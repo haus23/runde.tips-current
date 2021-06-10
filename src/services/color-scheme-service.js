@@ -15,7 +15,7 @@ class ColorSchemeService {
     });
   }
 
-  public setDarkMode(enabled: boolean): void {
+  setDarkMode(enabled) {
     if (enabled) {
       document.documentElement.classList.add('dark');
       localStorage.colorScheme = 'dark';
@@ -26,6 +26,6 @@ class ColorSchemeService {
   }
 }
 
-const colorSchemeService = new ColorSchemeService;
+const colorSchemeService = new ColorSchemeService();
 
 export default colorSchemeService;

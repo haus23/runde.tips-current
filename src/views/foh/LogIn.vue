@@ -29,15 +29,15 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script>
+import { ref } from "vue";
 import { LockClosedIcon } from "@heroicons/vue/outline";
 import { auth } from "../../api/firebase";
 import { signInWithEmailAndPassword } from "@firebase/auth";
-import { useStore } from "../../store";
 import { useRouter } from "vue-router";
+import { useStore } from 'vuex';
 
-export default defineComponent({
+export default {
   name: "FohLogIn",
   components: { LockClosedIcon },
   setup() {
@@ -65,5 +65,5 @@ export default defineComponent({
       logIn
     };
   },
-});
+}
 </script>

@@ -11,17 +11,12 @@
   </router-link>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
+<script>
+export default {
   name: "NavLink",
   props: {
     to: [String, Object],
   },
   emits: ['navigated']
-});
+};
 </script>
-
-<style>
-</style>

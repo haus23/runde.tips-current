@@ -14,17 +14,17 @@
   </component>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script>
+import { computed } from 'vue';
 import { TransitionRoot } from '@headlessui/vue';
 import SplashScreen from './common/components/SplashScreen.vue';
-import { useStore } from './store';
+import { useStore } from 'vuex';
 
-export default defineComponent({
+export default {
   name: 'App',
   components: {
     TransitionRoot,
-    SplashScreen
+    SplashScreen,
   },
   setup() {
     const store = useStore();
@@ -33,5 +33,5 @@ export default defineComponent({
       isLoading: computed(() => store.state.isLoading)
     }
   }
-})
+}
 </script>
