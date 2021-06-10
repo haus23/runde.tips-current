@@ -2,6 +2,7 @@
   <div
     class="
       absolute
+      z-50
       text-gray-800
       dark:text-gray-200
       bg-gray-50
