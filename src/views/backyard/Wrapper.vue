@@ -3,3 +3,12 @@
     <router-view></router-view>
   </div>
 </template>
+
+<script>
+import { useStore } from 'vuex';
+export default {
+  setup() {
+    useStore().dispatch('backyard/initialize');
+  },
+};
+</script>

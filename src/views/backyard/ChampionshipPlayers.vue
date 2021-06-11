@@ -7,8 +7,8 @@
 <script>
 import { computed, ref } from '@vue/runtime-core';
 import { useStore } from 'vuex';
-import { onSnapshot, orderBy, query } from '@firebase/firestore';
-import { playersRef } from '../../api/firebase';
+import { collection, onSnapshot, orderBy, query } from '@firebase/firestore';
+import { db, playersRef } from '../../api/firebase';
 export default {
   setup() {
     const store = useStore();
@@ -22,10 +22,19 @@ export default {
       }));
     });
 
+    const championship = computed(() => store.state.backyard.championship);
+    const championshipPlayersRef = collection(
+      db,
+      'championships',
+      championship.value.id,
+      'players'
+    );
+    onSnapshot(championshipPlayersRef, (qs) => {
+      qs.forEach((doc) => console.log(doc.data()));
+    });
+
     return {
-      championship: computed(
-        () => store.getters['backyard/currentChampionship']
-      ),
+      championship,
       players,
     };
   },
