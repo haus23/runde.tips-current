@@ -2,40 +2,57 @@
   <h2 class="text-sm font-semibold uppercase">
     {{ championship.title }} - Spieler
   </h2>
+
+  <div
+    class="
+      bg-blue-50
+      p-2
+      shadow-lg
+      rounded
+      text-gray-700
+      mt-8
+      flex
+      justify-around
+    "
+  >
+    <div>
+      <h3>Turnier</h3>
+      <ul>
+        <li v-for="cp in championshipPlayers" :key="cp.id">
+          {{ players[cp.player.id].name }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>Spieler</h3>
+      <ul>
+        <li v-for="(p, id) in players" :key="id">{{ p.name }}</li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
-import { computed, ref } from '@vue/runtime-core';
+import { computed } from '@vue/runtime-core';
 import { useStore } from 'vuex';
-import { collection, onSnapshot, orderBy, query } from '@firebase/firestore';
-import { db, playersRef } from '../../api/firebase';
+import { useCollection, useDictionary } from '../../api/firebase';
 export default {
   setup() {
     const store = useStore();
 
-    const players = ref([]);
-    const playersQuery = query(playersRef, orderBy('name', 'asc'));
-    onSnapshot(playersQuery, (snapshot) => {
-      players.value = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-    });
-
     const championship = computed(() => store.state.backyard.championship);
-    const championshipPlayersRef = collection(
-      db,
+
+    const [players] = useDictionary('players');
+    const [championshipPlayers] = useCollection(
       'championships',
       championship.value.id,
       'players'
     );
-    onSnapshot(championshipPlayersRef, (qs) => {
-      qs.forEach((doc) => console.log(doc.data()));
-    });
 
     return {
       championship,
       players,
+      championshipPlayers,
     };
   },
 };
