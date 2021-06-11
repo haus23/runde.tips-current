@@ -6,7 +6,6 @@
         <tr>
           <th>Nummer</th>
           <th class="text-left">Titel</th>
-          <th class="text-left hidden md:table-cell">Slug</th>
           <th>Veröffentlicht</th>
           <th>Abgeschlossen</th>
         </tr>
@@ -15,7 +14,6 @@
         <tr v-for="c in championships" :key="c.id">
           <td class="text-center">{{ c.nr }}</td>
           <td>{{ c.title }}</td>
-          <td class="hidden md:table-cell">{{ c.slug }}</td>
           <td class="text-center">
             <input type="checkbox" :checked="c.published" />
           </td>
