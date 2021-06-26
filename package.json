@@ -1,10 +1,20 @@
 {
   "name": "runde.tips",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "Haus23 Tipprunde",
+  "author": {
+    "name": "Micha Alt",
+    "email": "micha@haus23.net"
+  },
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "start": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haus23/runde.tips.git"
   },
   "dependencies": {
     "tailwindcss": "^2.2.4"
