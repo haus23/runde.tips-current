@@ -1,6 +1,11 @@
 {
   "name": "runde.tips",
   "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "start": "vite preview"
+  },
   "dependencies": {
     "tailwindcss": "^2.2.4"
   },
