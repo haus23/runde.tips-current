@@ -1,5 +1,5 @@
 <template>
-  <router-link v-bind="$props" custom v-slot="{ href, isActive, navigate }">
+  <router-link :to="to" custom v-slot="{ href, isActive, navigate }">
     <a
       v-bind="$attrs"
       :href="href"
@@ -11,16 +11,12 @@
   </router-link>
 </template>
 
-<script>
-import { RouterLink } from 'vue-router';
+<script setup type="ts">
+import {defineProps} from "vue";
 
-export default {
-  name: 'AppRouterLink',
-  inheritAttrs: false,
-  props: {
-    ...RouterLink.props,
-    to: [String, Object],
-    inactiveClass: String,
-  },
-};
+defineProps({
+  to: [Object, String],
+  activeClass: String,
+  inactiveClass: String,
+})
 </script>

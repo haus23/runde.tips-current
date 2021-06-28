@@ -8,7 +8,7 @@
     leave-to-class="opacity-0"
   >
     <splash-screen v-if="store.isLoading" />
-    <component v-else :is="$route.meta.layout">
+    <component v-else :is="route.meta.layout">
       <router-view />
     </component>
   </transition>
@@ -17,6 +17,7 @@
 <script>
 import SplashScreen from '@/components/SplashScreen.vue';
 import { useFrontStore } from '@/store';
+import {useRoute} from "vue-router";
 
 export default {
   components: {
@@ -29,6 +30,7 @@ export default {
 
     return {
       store,
+      route: useRoute()
     };
   },
 };
