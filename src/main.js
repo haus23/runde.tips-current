@@ -1,3 +1,6 @@
+// Tailwind
+import './styles.css';
+
 // App
 import { createApp } from 'vue';
 import App from './App.vue';

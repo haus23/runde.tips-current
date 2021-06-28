@@ -1,4 +1,3 @@
 <template>
-  <span>runde.tips</span>
+  <span class="block p-4 text-xl font-semibold">runde.tips</span>
 </template>
-
