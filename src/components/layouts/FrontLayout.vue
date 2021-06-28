@@ -76,13 +76,9 @@
         </div>
       </div>
     </nav>
-    <div class="pt-4">
-      <main>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <slot />
-        </div>
-      </main>
-    </div>
+    <main class="max-w-7xl py-4 mx-auto px-4 sm:px-6 lg:px-8">
+      <slot />
+    </main>
   </div>
 </template>
 
