@@ -8,10 +8,12 @@
     "start": "vite preview"
   },
   "dependencies": {
+    "vue": "^3.1.2"
+  },
+  "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.1.2",
     "prettier": "^2.3.2",
-    "vite": "^2.3.8",
-    "vue": "^3.1.2"
+    "vite": "^2.3.8"
   }
 }
