@@ -7,7 +7,7 @@
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <splash-screen v-if="isLoading" />
+    <splash-screen v-if="store.isLoading" />
     <component v-else :is="$route.meta.layout">
       <router-view />
     </component>
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { ref } from 'vue';
 import SplashScreen from '@/components/SplashScreen.vue';
+import { useFrontStore } from '@/store';
 
 export default {
   components: {
@@ -24,13 +24,11 @@ export default {
   },
 
   setup() {
-    const isLoading = ref(true);
-    setTimeout(() => {
-      isLoading.value = false;
-    }, 3000);
+    const store = useFrontStore();
+    store.initialize();
 
     return {
-      isLoading,
+      store,
     };
   },
 };
