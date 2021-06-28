@@ -1,6 +1,9 @@
 # Sensible data
 .env.local
 
+# Vite build
+dist/
+
 # NPM deps
 node_modules/
 
