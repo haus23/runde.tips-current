@@ -1,3 +1,6 @@
+# Sensible data
+.env.local
+
 # NPM deps
 node_modules/
 
