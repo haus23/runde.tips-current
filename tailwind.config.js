@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'jit',
+  mode: process.env.NODE_ENV ? 'jit' : undefined,
   purge: ['./index.html', './src/**/*.{vue,js}'],
   darkMode: 'class',
   theme: {
