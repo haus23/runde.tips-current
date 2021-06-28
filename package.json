@@ -1,3 +1,6 @@
 {
-  "name": "runde.tips"
+  "name": "runde.tips",
+  "dependencies": {
+    "vite": "^2.3.8"
+  }
 }
