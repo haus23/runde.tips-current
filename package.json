@@ -1,5 +1,11 @@
 {
   "name": "runde.tips",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "start": "vite preview"
+  },
   "dependencies": {
     "vite": "^2.3.8"
   }
