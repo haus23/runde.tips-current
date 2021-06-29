@@ -1,9 +1,9 @@
 <template>
   <h2 class="text-2xl font-semibold">Tabelle</h2>
-  <h3>{{ championship?.title }}</h3>
+  <h3>{{ championship.title }}</h3>
 </template>
 
-<script>
+<script type="ts">
 import {useFrontStore} from "@/store";
 
 export default {
@@ -12,7 +12,7 @@ export default {
     const store = useFrontStore();
 
     return {
-      championship: store.championship,
+      championship: store.championship
     };
   },
 };

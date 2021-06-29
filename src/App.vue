@@ -7,7 +7,7 @@
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <splash-screen v-if="store.isLoading" />
+    <splash-screen v-if="auth.isLoading || store.isLoading" />
     <component v-else :is="route.meta.layout">
       <router-view />
     </component>
@@ -16,8 +16,8 @@
 
 <script>
 import SplashScreen from '@/components/SplashScreen.vue';
-import { useFrontStore } from '@/store';
 import {useRoute} from "vue-router";
+import {useAuthStore, useFrontStore} from "./store";
 
 export default {
   components: {
@@ -25,10 +25,12 @@ export default {
   },
 
   setup() {
+    const auth = useAuthStore();
     const store = useFrontStore();
     store.initialize();
 
     return {
+      auth,
       store,
       route: useRoute()
     };
