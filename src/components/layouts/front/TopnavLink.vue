@@ -9,7 +9,7 @@
   </app-router-link>
 </template>
 
-<script>
+<script type="ts">
 import AppRouterLink from '@/components/common/AppRouterLink.vue';
 export default {
   name: 'TopnavLink',

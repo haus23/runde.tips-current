@@ -70,7 +70,8 @@
               <MoonIcon class="h-6 w-6" aria-hidden="true" />
             </button>
             <div class="-my-px self-stretch flex">
-              <topnav-link to="/login">Log In</topnav-link>
+              <topnav-link v-if="auth.isAuthenticated" to="/hinterhof/dashboard">Hinterhof</topnav-link>
+              <topnav-link v-else to="/login">Log In</topnav-link>
             </div>
           </div>
         </div>
@@ -82,11 +83,19 @@
   </div>
 </template>
 
-<script>
+<script type="ts">
+import {useAuthStore} from "@/store";
 import { MoonIcon } from '@heroicons/vue/outline';
-import TopnavLink from '@/components/layouts/TopnavLink.vue';
+import TopnavLink from './TopnavLink.vue';
 
 export default {
   components: { TopnavLink, MoonIcon },
+  setup() {
+    const auth = useAuthStore();
+
+    return {
+      auth
+    }
+  }
 };
 </script>

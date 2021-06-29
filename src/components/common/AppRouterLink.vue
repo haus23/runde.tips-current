@@ -6,7 +6,7 @@
       @click="navigate"
       :class="isActive ? activeClass : inactiveClass"
     >
-      <slot />
+      <slot :isActive="isActive" />
     </a>
   </router-link>
 </template>
