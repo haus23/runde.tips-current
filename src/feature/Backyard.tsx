@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import { BackyardLayout } from './components/BackyardLayout';
-import { ChampionshipList, Dashboard, PlayerList } from './pages';
+import { BackyardLayout } from './backyard/components/BackyardLayout';
+import { ChampionshipList, Dashboard, PlayerList } from './backyard/pages';
 
 export const Backyard = () => {
   let { path, url } = useRouteMatch();
