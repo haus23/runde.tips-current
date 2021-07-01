@@ -1,4 +1,5 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { SplashScreen } from './common/pages/SplashScreen';
@@ -7,7 +8,7 @@ import { Backyard } from './feature/Backyard';
 
 function App() {
   return (
-    <>
+    <RecoilRoot>
       <SplashScreen />
       <Router>
         <Switch>
@@ -19,7 +20,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </>
+    </RecoilRoot>
   );
 }
 

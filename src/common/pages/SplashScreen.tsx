@@ -1,17 +1,15 @@
 import { Transition } from '@headlessui/react';
 import React, { useState } from 'react';
+import { useAuth } from '../hooks';
+
 import './SplashScreen.css';
 
 export function SplashScreen() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 3000);
+  const { isAuthenticating } = useAuth();
 
   return (
     <Transition
-      show={isLoading}
+      show={isAuthenticating}
       leave="transition-opacity duration-500"
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
