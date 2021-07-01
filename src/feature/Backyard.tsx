@@ -5,7 +5,8 @@ import { BackyardLayout } from './backyard/components/BackyardLayout';
 import { ChampionshipList, Dashboard, PlayerList } from './backyard/pages';
 
 export const Backyard = () => {
-  let { path, url } = useRouteMatch();
+  const { path, url } = useRouteMatch();
+
   return (
     <BackyardLayout>
       <Switch>
