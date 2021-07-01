@@ -1,35 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { getList, useList } from './api/firebase';
-import { Championship } from './api/model';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import { AppLayout } from './components/AppLayout';
+import { LogIn, Matches, Players, Standings } from './pages';
+import { Backyard } from './backyard/Backyard';
 
 function App() {
-  const [title, setTitle] = useState('');
-  const [chList] = useList<Championship>('championships');
-
-  useEffect(() => {
-    getList<Championship>('championships').then((chamionships) => {
-      console.log(chamionships);
-      setTitle(chamionships[0].id);
-    });
-  }, []);
-
   return (
-    <div>
-      <span>runde.tips: {title}</span>
-      <table>
-        <tbody>
-          {chList.map((c) => (
-            <tr key={c.id}>
-              <td>{c.id}</td>
-              <td>{c.nr}</td>
-              <td>{c.title}</td>
-              <td>{c.published ? 'true' : 'false'}</td>
-              <td>{c.completed ? 'true' : 'false'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/hinterhof">
+          <Backyard />
+        </Route>
+        <Route>
+          <AppLayout>
+            <Switch>
+              <Route path="/tabelle">
+                <Standings />
+              </Route>
+              <Route path="/spieler">
+                <Players />
+              </Route>
+              <Route path="/spiele">
+                <Matches />
+              </Route>
+              <Route path="/login">
+                <LogIn />
+              </Route>
+              <Route path="/">
+                <Redirect to="/tabelle" />
+              </Route>
+            </Switch>
+          </AppLayout>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
