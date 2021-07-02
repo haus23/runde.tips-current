@@ -1,21 +1,23 @@
-import { useEffect } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRecoilState } from 'recoil';
-import { auth as firebaseAuth } from '../../api/firebase';
+import { signIn, signOut } from '../../api/firebase';
 
 import { authState } from '../state';
 
 export const useAuth = () => {
   const [auth, setAuth] = useRecoilState(authState);
 
-  useEffect(() => {
-    firebaseAuth.onAuthStateChanged((user) => {
-      setAuth({
-        isAuthenticating: false,
-        authenticated: user !== null,
-        user: user ? { email: user.email } : null,
-      });
-    });
-  }, [setAuth]);
+  const logIn = (email: string, password: string) => {
+    signIn(email, password);
+  };
 
-  return auth;
+  const logOut = () => {
+    signOut();
+  };
+
+  return {
+    ...auth,
+    signIn,
+    signOut,
+  };
 };
