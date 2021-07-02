@@ -12,6 +12,7 @@ export const BackyardLayout: FC = ({ children }) => {
         <Link to={`${url}/dashboard`}>Dashboard</Link>
         <Link to={`${url}/turniere`}>Turniere</Link>
         <Link to={`${url}/spieler`}>Spieler</Link>
+        <Link to={`${url}/logout`}>Log Out</Link>
       </nav>
       <main>{children}</main>
     </div>
