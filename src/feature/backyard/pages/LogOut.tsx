@@ -3,9 +3,9 @@ import { useHistory } from 'react-router';
 import { useAuth } from '../../../common/hooks';
 
 export function LogOut() {
-  const { signOut } = useAuth();
+  const { logOut } = useAuth();
   const history = useHistory();
-  signOut().then(() => history.push('/'));
+  logOut().then(() => history.push('/'));
 
   return <></>;
 }

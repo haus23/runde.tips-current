@@ -8,11 +8,11 @@ export function LogIn() {
   const [error, setError] = useState(false);
   const history = useHistory();
 
-  const { signIn } = useAuth();
+  const { logIn } = useAuth();
 
   const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    signIn(email, password).then((success) => {
+    logIn(email, password).then((success) => {
       if (success) {
         history.push('/');
       } else {
