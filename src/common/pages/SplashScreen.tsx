@@ -1,15 +1,13 @@
 import { Transition } from '@headlessui/react';
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 import { useAuth } from '../hooks';
 
 import './SplashScreen.css';
 
-export function SplashScreen() {
-  const { isAuthenticating } = useAuth();
-
+export const SplashScreen: FC<{ showWhile: boolean }> = ({ showWhile }) => {
   return (
     <Transition
-      show={isAuthenticating}
+      show={showWhile}
       leave="transition-opacity duration-500"
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
@@ -54,4 +52,4 @@ export function SplashScreen() {
       </div>
     </Transition>
   );
-}
+};

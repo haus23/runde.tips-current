@@ -14,3 +14,12 @@ export const authState = atom<{
     user: null,
   },
 });
+
+export const fohState = atom<{
+  isLoading: boolean;
+}>({
+  key: 'foh',
+  default: {
+    isLoading: true,
+  },
+});

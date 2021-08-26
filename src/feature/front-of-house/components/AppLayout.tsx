@@ -51,9 +51,6 @@ export const AppLayout: FC = ({ children }) => {
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
               "
               >
-                <span className="sr-only">
-                  Umschalten zwischen dunklen und hellen Farben
-                </span>
                 <MoonIcon className="h-6 w-6" aria-hidden="true" />
               </button>
               <div className="-my-px self-stretch flex">

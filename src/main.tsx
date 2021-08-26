@@ -14,7 +14,6 @@ import { RecoilRoot } from 'recoil';
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <SplashScreen />
       <App />
     </RecoilRoot>
   </React.StrictMode>,

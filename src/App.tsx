@@ -8,18 +8,26 @@ import {
 
 import { FrontOfHouse } from './feature/FrontOfHouse';
 import { Backyard } from './feature/Backyard';
-import { useAuth } from './common/hooks';
+import { useAuth, useFohData } from './common/hooks';
+import { SplashScreen } from './common/pages/SplashScreen';
 
 function App() {
-  const { authenticated } = useAuth();
-
+  const { isAuthenticating, authenticated } = useAuth();
+  const { isLoading } = useFohData();
   return (
     <Router>
       <Switch>
         <Route path="/hinterhof">
-          {authenticated ? <Backyard /> : <Redirect to="/login" />}
+          {isAuthenticating ? (
+            <SplashScreen showWhile={isAuthenticating} />
+          ) : authenticated ? (
+            <Backyard />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
         <Route>
+          <SplashScreen showWhile={isLoading} />
           <FrontOfHouse />
         </Route>
       </Switch>
