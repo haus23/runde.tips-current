@@ -4,18 +4,17 @@ import ReactDOM from 'react-dom';
 // Styles
 import './styles.css';
 
+// Api
+import { ApiProvider } from '@/api/context';
+
 // App
 import App from './App';
-import { SplashScreen } from './common/pages/SplashScreen';
-
-// State
-import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
+    <ApiProvider>
       <App />
-    </RecoilRoot>
+    </ApiProvider>
   </React.StrictMode>,
   document.getElementById('app')
 );
