@@ -1,6 +1,6 @@
-import { FirestoreDoc } from '../firebase';
+import { ModelBase } from '@/api/db/model-base';
 
-export interface Championship extends FirestoreDoc {
+export interface Championship extends ModelBase {
   id: string;
   title: string;
   nr: number;

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { TopLink } from './TopLink';
-import { useAuth } from '../../../common/hooks';
+import { useAuth } from '@/api/auth/hooks';
 import { MoonIcon } from '@heroicons/react/outline';
 
 export const AppLayout: FC = ({ children }) => {

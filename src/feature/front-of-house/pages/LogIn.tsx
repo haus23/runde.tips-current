@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../../../common/hooks';
+import { useAuth } from '@/api/auth/hooks';
 
 export function LogIn() {
   const [email, setEmail] = useState('');
@@ -8,11 +8,11 @@ export function LogIn() {
   const [error, setError] = useState(false);
   const history = useHistory();
 
-  const { logIn } = useAuth();
+  const { signIn } = useAuth();
 
   const handleSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    logIn(email, password).then((success) => {
+    signIn(email, password).then((success) => {
       if (success) {
         history.push('/');
       } else {

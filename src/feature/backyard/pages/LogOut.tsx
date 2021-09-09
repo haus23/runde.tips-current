@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { useAuth } from '../../../common/hooks';
+import { useAuth } from '@/api/auth/hooks';
 
 export function LogOut() {
-  const { logOut } = useAuth();
+  const { signOut } = useAuth();
   const history = useHistory();
-  logOut().then(() => history.push('/'));
+  signOut().then(() => history.push('/'));
 
   return <></>;
 }

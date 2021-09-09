@@ -4,17 +4,17 @@ import ReactDOM from 'react-dom';
 // Styles
 import './styles.css';
 
-// Api
-import { ApiProvider } from '@/api/context';
+// App
+import { AppProvider } from '@/common/context';
 
 // App
 import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApiProvider>
+    <AppProvider>
       <App />
-    </ApiProvider>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('app')
 );

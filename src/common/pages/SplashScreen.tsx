@@ -1,6 +1,5 @@
 import { Transition } from '@headlessui/react';
 import React, { FC } from 'react';
-import { useAuth } from '../hooks';
 
 import './SplashScreen.css';
 
